@@ -26,6 +26,7 @@
     "mongoose": "^8.18.3",
     "morgan": "^1.10.1",
     "nodemon": "^3.1.10",
+    "react-router-dom": "^7.9.4",
     "ts-dotenv": "^0.9.1",
     "ts-node": "^10.9.2",
     "zod": "^4.1.11"
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/react-router-dom": "^5.3.3",
     "tsconfig-paths": "^4.2.0"
   }
 }

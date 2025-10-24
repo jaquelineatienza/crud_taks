@@ -10,7 +10,7 @@ export const taksRoutes = Router()
 
 
 taksRoutes.get("/allTaks", findTaksControllers);
-taksRoutes.get("/taks/:id", findTaksByIDController)
 taksRoutes.post("/createTaks", createTaksController)
 taksRoutes.put('/update/:id', updateTaksController)
+taksRoutes.get("/taks/:id", findTaksByIDController)
 taksRoutes.delete("/delete/:id", deleteTaksController)

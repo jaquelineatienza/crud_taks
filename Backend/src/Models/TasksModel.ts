@@ -5,21 +5,15 @@ import { string } from "zod";
 const TaksSchema = new Schema<ITask>({
     titulo: {
         type: String,
-        required: true
     },
     descripcion: {
         type: String,
-        required: true
     },
-    estado: {
-        enum: {
-            values: ["pendiente", "completado"],
-            message: "El estado debe ser 'pendiente' o 'completado'"
-        },
-        required: true,
-        default: "pendiente"
-
-    }
+ estado: {
+  type: String,
+  enum: ["pendiente", "completado"],
+  default: "pendiente"
+}
 
 
 })
