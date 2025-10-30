@@ -1,20 +1,30 @@
-version: "3.9"
-
 services:
   backend:
-    build: ./backend
-    container_name: backend
+    build: ./backend # ← le dice a Docker que use el Dockerfile dentro de ./backend
+    container_name: crud_backend
     ports:
-      - "${BACKEND_PORT}:8080"
+      - "8080:8080"
     env_file:
       - .env
-    environment:
-      - MongoUrl=${mongoDb}
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:6
+    container_name: mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
 
   frontend:
     build: ./frontend
     container_name: frontend
-    # Build the frontend into a named volume so nginx can serve it
     volumes:
       - frontend_build:/app/build
     command: sh -c "npm run build && sleep 1"
@@ -31,5 +41,11 @@ services:
       - backend
 
 volumes:
+  mongo-data:
+    driver: local
   frontend_build:
     driver: local
+
+networks:
+  app-network:
+    driver: bridge
