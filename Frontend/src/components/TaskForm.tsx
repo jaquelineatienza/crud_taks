@@ -6,7 +6,7 @@ const TaksForm: React.FC = () => {
   const [formData, setFormData] = useState({
     titulo: "",
     descripcion: "",
-    estado: "pendiente" as "pendiente" | "completado"
+    estado: ""
   });
   
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ const TaksForm: React.FC = () => {
       // Llamar al servicio para crear la tarea
       const response = await taskService.createTask(taskData);
       
-      if (response.ok) {
+      if (response) {
         setMessage("✅ Tarea creada exitosamente!");
         // Limpiar el formulario
         setFormData({
@@ -78,7 +78,7 @@ const TaksForm: React.FC = () => {
     
       
       <form onSubmit={handleSubmit} >
-        <div className="mb-[10px] flex flex-col gap-2">
+        <div className="mb-2,5 flex flex-col gap-2">
           <label htmlFor="titulo"className="font-bold text-purple-900">Título:</label>
           <input 
             type="text" 
@@ -91,7 +91,7 @@ const TaksForm: React.FC = () => {
              className="w-[40%] border-2 border-gray-500"
           />
         </div>
-        <div className="mb-[10px]">
+        <div className="mb-2,5">
           <label htmlFor="descripcion" className="font-bold text-purple-900">Descripción:</label>
           <textarea 
             id="descripcion" 
@@ -101,7 +101,7 @@ const TaksForm: React.FC = () => {
             onChange={handleChange}
             required
             disabled={loading}
-            className="w-[100%] border-2 border-gray-500"
+            className="w-full border-2 border-gray-500"
           ></textarea>
         </div>
 

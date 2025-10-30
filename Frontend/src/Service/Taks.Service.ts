@@ -12,7 +12,8 @@ export const taskService = {
         body: JSON.stringify(task),
         });
 
-        return response
+       const data = await response.json()
+       return data
     },
 
   async getTasks(): Promise<ITask[]> {
@@ -37,7 +38,8 @@ export const taskService = {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updates),
         });
-       return response
+       const data = await response.json()
+       return data
     },
 
    async deleteTask(id: string): Promise<boolean> {
