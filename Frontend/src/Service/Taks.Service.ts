@@ -1,36 +1,36 @@
 import type { ITask } from "../taks";
 
-const API_BASE_URL = 'http://localhost:3000/api'; // 🔹 Reemplaza con tu endpoint real
+const API_BASE_URL = '/api'; // 🔹 Reemplaza con tu endpoint real
 
 
 
 export const taskService = {
-    async createTask(task: Omit<ITask, '_id'>): Promise<ITask> {
+    async createTask(task: Omit<ITask, 'id'>): Promise<ITask> {
         const response = await fetch(`${API_BASE_URL}/createTaks`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(task),
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(task),
         });
 
-       const data = await response.json()
-       return data
+        const data = await response.json()
+        return data
     },
 
-  async getTasks(): Promise<ITask[]> {
-    const response = await fetch(`${API_BASE_URL}/allTaks`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
+    async getTasks(): Promise<ITask[]> {
+        const response = await fetch(`${API_BASE_URL}/allTaks`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        });
 
-    if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`);
-    }
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
 
-    const data = await response.json(); 
-    return data;
-  },   
+        const data = await response.json();
+        return data;
+    },
 
-    
+
 
     async updateTask(id: string, updates: Partial<ITask>): Promise<ITask> {
         const response = await fetch(`${API_BASE_URL}/update/${id}`, {
@@ -38,30 +38,30 @@ export const taskService = {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updates),
         });
-       const data = await response.json()
-       return data
+        const data = await response.json()
+        return data
     },
 
-   async deleteTask(id: string): Promise<boolean> {
-    try {
-        const response = await fetch(`${API_BASE_URL}/delete/${id}`, { 
-            method: 'DELETE',
-            headers: { 
-                'Content-Type': 'application/json',
-            },
-        });
+    async deleteTask(id: string): Promise<boolean> {
+        try {
+            const response = await fetch(`${API_BASE_URL}/delete/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
-        // Verificar que la respuesta sea exitosa
-        if (response.status === 200 || response.status === 204) {
-            console.log('✅ Tarea eliminada exitosamente');
-            return true;
-        } else {
-            console.error('❌ Error del servidor:', response.status, response.statusText);
+            // Verificar que la respuesta sea exitosa
+            if (response.status === 200 || response.status === 204) {
+                console.log('✅ Tarea eliminada exitosamente');
+                return true;
+            } else {
+                console.error('❌ Error del servidor:', response.status, response.statusText);
+                return false;
+            }
+        } catch (error) {
+            console.error('❌ Error de red:', error);
             return false;
         }
-    } catch (error) {
-        console.error('❌ Error de red:', error);
-        return false;
-    }
-},
+    },
 };

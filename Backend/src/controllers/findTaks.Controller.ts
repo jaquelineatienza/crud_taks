@@ -1,7 +1,7 @@
-import { IFindTaks } from "@repositories/FindTaks";
-import { FindTaksService } from "@services/findEquipos.Service";
 import { Request, Response } from "express";
-import { FindTaks } from "mongoRepository/TaksMongo.repository";
+import { FindTaks } from "../mongoRepository/TaksMongo.repository";
+import { IFindTaks } from "../repositories/FindTaks";
+import { FindTaksService } from "../services/findEquipos.Service";
 
 const findTaksMongo: IFindTaks = new FindTaks()
 const findTaksService = new FindTaksService(findTaksMongo)

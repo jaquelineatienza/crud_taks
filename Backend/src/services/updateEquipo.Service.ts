@@ -1,5 +1,5 @@
-import { IUpdateTaks } from "@repositories/UpadateTaks";
-import { ITask } from "types/TasksTypes";
+import { IUpdateTaks } from "../repositories/UpadateTaks";
+import { ITask } from "../types/TasksTypes";
 
 
 

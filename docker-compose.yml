@@ -1,9 +1,11 @@
+version: "3.8"
+
 services:
   backend:
-    build: ./backend # ← le dice a Docker que use el Dockerfile dentro de ./backend
+    build: ./Backend
     container_name: crud_backend
     ports:
-      - "8080:8080"
+      - "8081:8080"
     env_file:
       - .env
     depends_on:
@@ -22,23 +24,29 @@ services:
     networks:
       - app-network
 
-  frontend:
-    build: ./frontend
-    container_name: frontend
+  frontend_builder:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: frontend_builder
     volumes:
       - frontend_build:/app/build
-    command: sh -c "npm run build && sleep 1"
+    networks:
+      - app-network
 
   nginx:
     image: nginx:alpine
     container_name: nginx
     ports:
-      - "80:80"
+      - "8082:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - frontend_build:/usr/share/nginx/html:ro
     depends_on:
       - backend
+      - frontend_builder
+    networks:
+      - app-network
 
 volumes:
   mongo-data:

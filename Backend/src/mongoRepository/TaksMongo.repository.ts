@@ -1,9 +1,10 @@
-import { ICreateTaks } from "@repositories/createTaks";
-import { IDeleteTaks } from "@repositories/DeleteTaks";
-import { IFindTaks } from "@repositories/FindTaks";
-import { IUpdateTaks } from "@repositories/UpadateTaks";
-import { TaksModel } from "Models/TasksModel";
-import { ITask } from "types/TasksTypes";
+import { TaksModel } from "../Models/TasksModel";
+import { ICreateTaks } from "../repositories/createTaks";
+import { IDeleteTaks } from "../repositories/DeleteTaks";
+import { IFindTaks } from "../repositories/FindTaks";
+import { IUpdateTaks } from "../repositories/UpadateTaks";
+import { ITask } from "../types/TasksTypes";
+
 
 export class CreateTaksMongo implements ICreateTaks {
     async createTaks(taks: ITask): Promise<ITask> {

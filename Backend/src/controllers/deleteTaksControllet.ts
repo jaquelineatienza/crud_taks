@@ -1,7 +1,9 @@
-import { IDeleteTaks } from "@repositories/DeleteTaks";
-import { DeleteTaksService } from "@services/deleteEquipo.Service";
+
 import { Request, Response } from "express";
-import { DeleteTaksMongo } from "mongoRepository/TaksMongo.repository";
+import { DeleteTaksMongo } from "../mongoRepository/TaksMongo.repository";
+import { IDeleteTaks } from "../repositories/DeleteTaks";
+import { DeleteTaksService } from "../services/deleteEquipo.Service";
+
 
 const taksRepoMongo: IDeleteTaks = new DeleteTaksMongo()
 const deleteTaksService = new DeleteTaksService(taksRepoMongo)

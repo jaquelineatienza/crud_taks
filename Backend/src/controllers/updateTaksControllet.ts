@@ -1,8 +1,9 @@
-import { IUpdateTaks } from "@repositories/UpadateTaks";
-import { UpdateTaksService } from "@services/updateEquipo.Service";
 import { Request, Response } from "express";
-import { UpdateTaks } from "mongoRepository/TaksMongo.repository";
-import { ITask } from "types/TasksTypes";
+import { UpdateTaks } from "../mongoRepository/TaksMongo.repository";
+import { IUpdateTaks } from "../repositories/UpadateTaks";
+import { UpdateTaksService } from "../services/updateEquipo.Service";
+import { ITask } from "../types/TasksTypes";
+
 
 const updateTaksMongo: IUpdateTaks = new UpdateTaks();
 const updateTaksService = new UpdateTaksService(updateTaksMongo);

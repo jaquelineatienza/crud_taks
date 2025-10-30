@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { ITask } from "types/TasksTypes";
-import { string } from "zod";
+import { ITask } from "../types/TasksTypes";
+
 
 const TaksSchema = new Schema<ITask>({
     titulo: {
@@ -9,11 +9,11 @@ const TaksSchema = new Schema<ITask>({
     descripcion: {
         type: String,
     },
- estado: {
-  type: String,
-  enum: ["pendiente", "completado"],
-  default: "pendiente"
-}
+    estado: {
+        type: String,
+        enum: ["pendiente", "completado"],
+        default: "pendiente"
+    }
 
 
 })

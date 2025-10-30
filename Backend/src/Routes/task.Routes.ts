@@ -1,8 +1,8 @@
-import { createTaksController } from "@controllers/createTaks.controller";
-import { deleteTaksController } from "@controllers/deleteTaksControllet";
-import { findTaksByIDController, findTaksControllers } from "@controllers/findTaks.Controller";
-import { updateTaksController } from "@controllers/updateTaksControllet";
 import { Router } from "express";
+import { findTaksByIDController, findTaksControllers } from "../controllers/findTaks.Controller";
+import { createTaksController } from "../controllers/createTaks.controller";
+import { updateTaksController } from "../controllers/updateTaksControllet";
+import { deleteTaksController } from "../controllers/deleteTaksControllet";
 
 
 
@@ -14,3 +14,4 @@ taksRoutes.post("/createTaks", createTaksController)
 taksRoutes.put('/update/:id', updateTaksController)
 taksRoutes.get("/taks/:id", findTaksByIDController)
 taksRoutes.delete("/delete/:id", deleteTaksController)
+

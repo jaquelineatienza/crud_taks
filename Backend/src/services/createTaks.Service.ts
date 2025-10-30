@@ -1,5 +1,6 @@
-import { ICreateTaks } from "@repositories/createTaks";
-import { ITask } from "types/TasksTypes";
+import { ICreateTaks } from "../repositories/createTaks";
+import { ITask } from "../types/TasksTypes";
+
 
 
 

@@ -1,4 +1,5 @@
-import { ITask } from "types/TasksTypes";
+import { ITask } from "../types/TasksTypes";
+
 
 
 export interface ICreateTaks {

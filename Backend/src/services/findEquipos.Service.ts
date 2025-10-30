@@ -1,5 +1,5 @@
-import { IFindTaks } from "@repositories/FindTaks"
-import { ITask } from "types/TasksTypes"
+import { IFindTaks } from "../repositories/FindTaks"
+import { ITask } from "../types/TasksTypes"
 
 
 export class FindTaksService implements IFindTaks {

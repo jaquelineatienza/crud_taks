@@ -29,7 +29,7 @@ const UpdateTaskForm: React.FC = () => {
       const tasks = await taskService.getTasks();
 
       const task = tasks.find((t: ITask) => t.id === id);
-
+      console.log(task?.id);
       if (task) {
         setFormData({
           titulo: task.titulo,

@@ -1,4 +1,5 @@
-import { IDeleteTaks } from "@repositories/DeleteTaks";
+import { IDeleteTaks } from "../repositories/DeleteTaks";
+
 
 
 

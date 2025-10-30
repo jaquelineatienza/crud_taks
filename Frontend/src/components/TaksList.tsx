@@ -43,6 +43,7 @@ const TaskList: React.FC = () => {
     try {
       setLoading(true);
       const response = await taskService.getTasks();
+      console.log(response);
       setTasks(Array.isArray(response) ? response : []);
     } catch (error) {
       console.error("❌ Error al cargar tareas:", error);
